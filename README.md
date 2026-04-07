@@ -1,2 +1,2 @@
 # WebDev-Portfolio-Bob-Xia
-interesting things
+interesting things already connect to the web

@@ -1,55 +1,226 @@
 <!DOCTYPE html>
-<!-- 声明这是一个 HTML5 网页文档 -->
-<html lang="En">
+<html lang="en">
 <head>
-    <!-- 设置网页字符编码，保证中文正常显示 -->
     <meta charset="UTF-8">
-    <!-- 让网页在手机和电脑上都能按屏幕宽度显示 -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>个人介绍</title>
-    <!-- 引入外部 CSS 样式文件 -->
-    <link rel="stylesheet" href="style.css">
+    <meta name="description" content="Bob Xia's personal web development portfolio.">
+    <title>Bob Xia | Web Development Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
 </head>
 <body>
-    <!-- 网页顶部区域：放姓名和一句简单介绍 -->
-    <header>
-        <h1>Bob Xia</h1>
-        <p>A new web developer who love adventure and technology.</p>
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+    <div class="background-light" aria-hidden="true"></div>
+
+    <header class="site-header">
+        <nav class="navbar" aria-label="Main navigation">
+            <a class="logo" href="index.html">Bob Xia</a>
+            <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-menu">
+                Menu
+            </button>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="#portfolio">Portfolio</a></li>
+                <li><a href="#global-goal">Global Goal</a></li>
+                <li><a href="design-thinking.html">Design Thinking</a></li>
+                <li><a href="behind-the-curtain.html">Behind the Curtain</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+
+        <section class="hero">
+            <div class="hero-text">
+                <p class="eyebrow">Student Web Developer</p>
+                <h1>Building useful, clear, and creative websites.</h1>
+                <p>
+                    I am Bob Xia, a high school student with a conditional offer from the University of Toronto.
+                    I am learning web development because I enjoy solving problems and turning ideas into real projects.
+                </p>
+                <div class="hero-actions">
+                    <a class="button primary-button" href="#portfolio">View Portfolio</a>
+                    <button class="button secondary-button" type="button" data-modal-open="reflection-modal">
+                        Read Reflection
+                    </button>
+                </div>
+            </div>
+
+            <div class="profile-card" aria-label="Profile summary">
+                <img class="profile-photo" src="assets/profile-placeholder.svg" alt="Placeholder profile photo for Bob Xia">
+                <h2>Bob Xia</h2>
+                <p>Programming learner, fishing enthusiast, and cycling fan.</p>
+            </div>
+        </section>
     </header>
 
-    <!-- 网页主要内容区域 -->
-    <main>
-        <!-- 关于我：介绍自己的基本情况 -->
-        <section>
-            <h2>about me </h2>
+    <main id="main-content">
+        <section class="section card" id="about">
+            <p class="eyebrow">About Me</p>
+            <h2>Who I Am</h2>
             <p>
-                I learn how to code in 2024, and I am very interested in web development. I have a background in computer science and I enjoy creating websites and applications that are both functional and visually appealing.
+                I started learning coding in 2024 and quickly became interested in how websites are planned,
+                designed, built, tested, and improved. As a high school student preparing for university, I want
+                to keep improving my technical skills and my ability to communicate ideas through digital work.
             </p>
         </section>
 
-        <!-- 兴趣爱好：用列表展示个人爱好 -->
-        <section>
-            <h2>Interests and Hobbies</h2>
-            <ul>
-                <li>Reading</li>
-                <li>Sports</li>
-                <li>Programming</li>
-                <li>Music</li>
+        <section class="section" id="skills">
+            <p class="eyebrow">Skills</p>
+            <h2>Current Web Development Skills</h2>
+            <div class="skill-grid">
+                <article class="mini-card">
+                    <h3>HTML</h3>
+                    <p>Semantic structure, headings, links, images, forms, and accessible page organization.</p>
+                </article>
+                <article class="mini-card">
+                    <h3>CSS</h3>
+                    <p>Responsive layouts, Flexbox, Grid, color systems, animations, hover effects, and typography.</p>
+                </article>
+                <article class="mini-card">
+                    <h3>JavaScript</h3>
+                    <p>Interactive buttons, form validation, navigation toggles, modals, and dynamic content changes.</p>
+                </article>
+                <article class="mini-card">
+                    <h3>Design Thinking</h3>
+                    <p>Planning for users, testing ideas, improving clarity, and making design decisions with purpose.</p>
+                </article>
+            </div>
+        </section>
+
+        <section class="section" id="portfolio">
+            <p class="eyebrow">Portfolio</p>
+            <h2>Projects, Work, and Hobbies</h2>
+            <div class="portfolio-grid">
+                <article class="project-card">
+                    <div class="project-visual programming-visual" role="img" aria-label="Abstract code screen illustration"></div>
+                    <h3>Programming Practice</h3>
+                    <p>
+                        Programming helps me develop logical thinking. I enjoy building small web pages, solving
+                        problems, and learning how HTML, CSS, and JavaScript work together.
+                    </p>
+                    <button class="text-button" type="button" data-toggle="programming-details">More details</button>
+                    <p class="hidden-detail" id="programming-details">
+                        This portfolio itself is an example of my learning: it includes semantic HTML, responsive CSS,
+                        animations, and JavaScript interactions.
+                    </p>
+                </article>
+
+                <article class="project-card">
+                    <div class="project-visual fishing-visual" role="img" aria-label="Fishing rod and water illustration"></div>
+                    <h3>Fishing</h3>
+                    <p>
+                        Fishing teaches patience, observation, and focus. Those skills also help me when debugging
+                        code or improving a project step by step.
+                    </p>
+                    <button class="text-button" type="button" data-toggle="fishing-details">More details</button>
+                    <p class="hidden-detail" id="fishing-details">
+                        I chose fishing as part of my portfolio because it shows a quieter side of my personality and
+                        my ability to stay calm while solving problems.
+                    </p>
+                </article>
+
+                <article class="project-card">
+                    <div class="project-visual cycling-visual" role="img" aria-label="Cycling route illustration"></div>
+                    <h3>Cycling</h3>
+                    <p>
+                        Cycling gives me energy and discipline. It reminds me that progress comes from consistent
+                        practice, whether I am training physically or learning to code.
+                    </p>
+                    <button class="text-button" type="button" data-toggle="cycling-details">More details</button>
+                    <p class="hidden-detail" id="cycling-details">
+                        Cycling also influenced the website's style: I wanted the design to feel active, bright, and
+                        forward-moving.
+                    </p>
+                </article>
+            </div>
+        </section>
+
+        <section class="section split-section" id="global-goal">
+            <div>
+                <p class="eyebrow">UN Global Goal</p>
+                <h2>Goal 2: Zero Hunger</h2>
+                <p>
+                    I selected Zero Hunger because food security is connected to health, education, fairness, and
+                    opportunity. A world without hunger gives more people the chance to learn, work, and build a better
+                    future.
+                </p>
+                <p>
+                    As a web developer, I can use websites to share information, explain problems clearly, and help
+                    people connect with solutions such as donations, volunteering, and community food programs.
+                </p>
+            </div>
+            <div class="goal-badge" aria-label="UN Global Goal 2 Zero Hunger">
+                <span>2</span>
+                <strong>Zero Hunger</strong>
+            </div>
+        </section>
+
+        <section class="section card" id="education">
+            <p class="eyebrow">Education</p>
+            <h2>Academic Background</h2>
+            <p>
+                I am currently a high school student and have received a conditional offer from the University of
+                Toronto. This motivates me to keep developing strong academic habits and practical technical skills.
+            </p>
+        </section>
+
+        <section class="section card" id="accessibility">
+            <p class="eyebrow">Accessibility Statement</p>
+            <h2>How This Website Supports Users</h2>
+            <ul class="feature-list">
+                <li>Semantic HTML elements create a clear page structure for readers and assistive technology.</li>
+                <li>Navigation links, buttons, and form fields are keyboard accessible.</li>
+                <li>Images and visual placeholders include descriptive text or accessible labels.</li>
+                <li>Color contrast, readable typography, and responsive layout improve usability on different screens.</li>
+                <li>A skip link helps keyboard users move directly to the main content.</li>
             </ul>
         </section>
 
-        <!-- 联系方式：填写邮箱、电话或个人主页 -->
-        <section>
-            <h2>Contact Information</h2>
-            <p>Email:bob13918456010@gmail.com</p>
-            <p>Phone: 13918456010</p>
-            
+        <section class="section contact-section" id="contact">
+            <div>
+                <p class="eyebrow">Contact</p>
+                <h2>Get in Touch</h2>
+                <p>Email: <a href="mailto:bob13918456010@gmail.com">bob13918456010@gmail.com</a></p>
+            </div>
+
+            <form class="contact-form" id="contact-form" novalidate>
+                <label for="name">Name</label>
+                <input id="name" name="name" type="text" autocomplete="name" required>
+
+                <label for="email">Email</label>
+                <input id="email" name="email" type="email" autocomplete="email" required>
+
+                <label for="message">Message</label>
+                <textarea id="message" name="message" rows="4" required></textarea>
+
+                <button class="button primary-button" type="submit">Send Message</button>
+                <p class="form-message" id="form-message" role="status" aria-live="polite"></p>
+            </form>
         </section>
     </main>
 
-    <!-- 网页底部区域 -->
-    <footer>
-        <p>© 2026 Bob Xia</p>
+    <div class="modal" id="reflection-modal" role="dialog" aria-modal="true" aria-labelledby="reflection-title" hidden>
+        <div class="modal-content">
+            <button class="modal-close" type="button" data-modal-close aria-label="Close reflection modal">×</button>
+            <h2 id="reflection-title">Development Reflection</h2>
+            <p>
+                Learning programming has not been easy for me. At the beginning, even a small mistake in spelling,
+                punctuation, or file paths could stop the entire page from working. I had to learn how to slow down,
+                read error messages carefully, and test one part of the project at a time. HTML helped me understand
+                structure, CSS challenged me to think about design, and JavaScript pushed me to think more logically.
+            </p>
+            <p>
+                Even though the process was sometimes frustrating, finishing a programming project gave me a kind of
+                happiness and pride that is hard to describe. Seeing a page change from plain text into a real website
+                made me feel that my effort was visible. This project taught me that programming is not only about
+                writing code; it is also about patience, problem solving, creativity, and the confidence to keep trying.
+            </p>
+        </div>
+    </div>
+
+    <button class="back-to-top" type="button" aria-label="Back to top">↑</button>
+
+    <footer class="site-footer">
+        <p>© 2026 Bob Xia. Web Development Portfolio.</p>
     </footer>
 </body>
 </html>

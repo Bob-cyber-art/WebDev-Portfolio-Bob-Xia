@@ -373,6 +373,14 @@ li {
     background-position: center;
 }
 
+.project-image {
+    display: block;
+    width: 100%;
+    height: 150px;
+    border-radius: 12px;
+    object-fit: cover;
+}
+
 .programming-visual {
     background:
         linear-gradient(135deg, rgba(120, 232, 255, 0.28), rgba(98, 230, 164, 0.2)),

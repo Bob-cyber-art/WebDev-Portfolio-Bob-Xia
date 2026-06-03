@@ -201,6 +201,28 @@
                 <button class="button primary-button" type="submit">Send Message</button>
                 <p class="form-message" id="form-message" role="status" aria-live="polite"></p>
             </form>
+
+            <section class="chatbot-panel" aria-labelledby="chatbot-title">
+                <div class="chatbot-header">
+                    <div>
+                        <p class="eyebrow">AI Chat</p>
+                        <h2 id="chatbot-title">Ask Bob's AI Assistant</h2>
+                    </div>
+                    <span class="chatbot-status" id="chatbot-status">Ready</span>
+                </div>
+
+                <div class="chatbot-messages" id="chatbot-messages" role="log" aria-live="polite" aria-label="AI chat messages">
+                    <p class="chat-message bot-message">
+                        Hi, I am Bob's portfolio assistant. Ask me about Bob, this website, or web development.
+                    </p>
+                </div>
+
+                <form class="chatbot-form" id="chatbot-form">
+                    <label class="visually-hidden" for="chatbot-input">Message for AI assistant</label>
+                    <textarea id="chatbot-input" name="message" rows="3" placeholder="Type your question..." required></textarea>
+                    <button class="button primary-button" type="submit">Send</button>
+                </form>
+            </section>
         </section>
     </main>
 

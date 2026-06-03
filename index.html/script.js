@@ -6,6 +6,11 @@ const modalCloseButtons = document.querySelectorAll("[data-modal-close]");
 const contactForm = document.querySelector("#contact-form");
 const formMessage = document.querySelector("#form-message");
 const backToTop = document.querySelector(".back-to-top");
+const chatbotForm = document.querySelector("#chatbot-form");
+const chatbotInput = document.querySelector("#chatbot-input");
+const chatbotMessages = document.querySelector("#chatbot-messages");
+const chatbotStatus = document.querySelector("#chatbot-status");
+const chatHistory = [];
 
 if (navToggle && navMenu) {
     navToggle.addEventListener("click", () => {
@@ -94,5 +99,87 @@ if (backToTop) {
             top: 0,
             behavior: "smooth"
         });
+    });
+}
+
+function addChatMessage(content, type) {
+    if (!chatbotMessages) {
+        return null;
+    }
+
+    const message = document.createElement("p");
+    message.className = `chat-message ${type}-message`;
+    message.textContent = content;
+    chatbotMessages.appendChild(message);
+    chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+    return message;
+}
+
+function setChatbotStatus(text, isError = false) {
+    if (!chatbotStatus) {
+        return;
+    }
+
+    chatbotStatus.textContent = text;
+    chatbotStatus.style.background = isError ? "var(--yellow)" : "var(--green)";
+}
+
+if (chatbotForm && chatbotInput && chatbotMessages) {
+    chatbotForm.addEventListener("submit", async (event) => {
+        event.preventDefault();
+
+        const userMessage = chatbotInput.value.trim();
+
+        if (!userMessage) {
+            return;
+        }
+
+        addChatMessage(userMessage, "user");
+        chatHistory.push({ role: "user", content: userMessage });
+        chatbotInput.value = "";
+        chatbotInput.disabled = true;
+        chatbotForm.querySelector("button").disabled = true;
+        setChatbotStatus("Thinking");
+
+        const loadingMessage = addChatMessage("Thinking...", "bot");
+
+        try {
+            const response = await fetch("/api/chat", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    messages: chatHistory
+                })
+            });
+
+            const data = await response.json();
+
+            if (!response.ok) {
+                throw new Error(data.error || "The AI assistant is unavailable right now.");
+            }
+
+            const reply = data.reply || "I could not generate a response. Please try again.";
+
+            if (loadingMessage) {
+                loadingMessage.textContent = reply;
+            }
+
+            chatHistory.push({ role: "assistant", content: reply });
+            setChatbotStatus("Ready");
+        } catch (error) {
+            const errorMessage = error.message || "The AI assistant is unavailable right now.";
+
+            if (loadingMessage) {
+                loadingMessage.textContent = errorMessage;
+            }
+
+            setChatbotStatus("Offline", true);
+        } finally {
+            chatbotInput.disabled = false;
+            chatbotForm.querySelector("button").disabled = false;
+            chatbotInput.focus();
+        }
     });
 }
